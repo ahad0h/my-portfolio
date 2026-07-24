@@ -1,0 +1,530 @@
+/* إلغاء جميع الحدود والخطوط السوداء من عناصر الصفحة الرئيسية */
+html, body, #root, main, .main-layout {
+  border: none !important;
+  outline: none !important;
+}
+
+:root {
+  --bg-midnight: #1a1025;
+  --bg-midnight-deep: #120a1c;
+  --royal-purple: #2d1b3d;
+  --card-bg: #241733;
+  --text-main: #F5EAD6;       /* كريمي فاتح بدل الأسود */
+  --text-muted: #C9B8DC;      /* بنفسجي فاتح للنصوص الفرعية */
+  --accent-rose: #C41E3A;
+  --accent-rose-deep: #8B1538;
+  --accent-gold: #D4AF37;
+  --accent-gold-light: #F4E4BC;
+  --border-soft: rgba(212, 175, 55, 0.25);
+  --glow: rgba(212, 175, 55, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  background: radial-gradient(ellipse at top, var(--royal-purple), var(--bg-midnight) 65%);
+  font-family: 'Poppins', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  direction: ltr;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* نجوم متلألئة بالخلفية */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, var(--accent-gold-light) 45%, transparent 100%),
+    radial-gradient(1px 1px at 70% 60%, var(--accent-gold-light) 45%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 40% 80%, var(--accent-gold-light) 45%, transparent 100%),
+    radial-gradient(1px 1px at 85% 20%, var(--accent-gold-light) 45%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 45%, var(--accent-gold-light) 45%, transparent 100%);
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  opacity: 0.45;
+  animation: twinkle 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to   { opacity: 0.55; }
+}
+
+/* Container التنسيق العريض والمتناسق للموقع كامل */
+.main-layout {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  background: linear-gradient(160deg, rgba(45, 27, 61, 0.85), rgba(26, 16, 37, 0.95));
+  border: 1px solid var(--accent-gold);
+  padding: 45px 40px;
+  border-radius: 24px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+  margin-bottom: 35px;
+  text-align: center;
+  position: relative;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(196, 30, 58, 0.15);
+  color: var(--accent-gold-light);
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  border: 1px solid var(--accent-gold);
+}
+
+.greeting {
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--accent-gold-light) !important;
+  text-shadow: 0 0 20px var(--glow);
+  margin-bottom: 15px;
+}
+
+.highlight-name {
+  background: linear-gradient(90deg, var(--accent-rose), var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.waving-hand {
+  width: 42px;
+  height: 42px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.bio {
+  color: var(--text-muted) !important;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 850px;
+  margin: 0 auto 25px auto;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: 1px solid var(--accent-gold);
+}
+
+.btn:hover {
+  box-shadow: 0 0 22px var(--glow);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-rose-deep), var(--accent-rose));
+  color: var(--accent-gold-light);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent-gold-light);
+  border: 1px solid var(--accent-gold);
+}
+
+/* --- Section Formatting --- */
+.section {
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent-gold-light) !important;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* بطاقات المحتوى (Cards) لإبراز الكلام بوضوح */
+.experience-card, .project-card, .todo-card {
+  background: linear-gradient(160deg, rgba(45, 27, 61, 0.9), rgba(26, 16, 37, 0.95)) !important;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
+  margin-bottom: 20px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.experience-card:hover, .project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-gold);
+  box-shadow: 0 10px 30px var(--glow);
+}
+
+.exp-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.exp-icon {
+  font-size: 1.8rem;
+  background: rgba(212, 175, 55, 0.15);
+  padding: 10px;
+  border-radius: 14px;
+}
+
+.exp-info h3, .proj-header h3 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--accent-gold-light) !important;
+  font-weight: 700;
+}
+
+.company-name {
+  margin: 4px 0 0;
+  color: var(--text-muted) !important;
+  font-weight: 500;
+}
+
+.period-tag {
+  margin-left: auto;
+  background: rgba(196, 30, 58, 0.2);
+  color: var(--accent-gold-light);
+  border: 1px solid var(--accent-gold);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.exp-summary, .proj-summary {
+  color: var(--text-muted) !important;
+  margin: 14px 0;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* شبكة المشاريع Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 20px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+  border: 1px solid var(--border-soft);
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.tag-purple {
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--accent-gold-light);
+  border: 1px solid var(--accent-gold);
+}
+
+/* --- Task Manager / Todo Section --- */
+.todo-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.todo-input-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.todo-input-group input {
+  flex: 1;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  outline: none;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.todo-input-group input::placeholder {
+  color: var(--text-muted);
+}
+
+.todo-input-group button {
+  background: linear-gradient(135deg, var(--accent-rose-deep), var(--accent-rose));
+  color: var(--accent-gold-light);
+  border: 1px solid var(--accent-gold);
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease;
+}
+
+.todo-input-group button:hover {
+  box-shadow: 0 0 18px var(--glow);
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--accent-gold);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border-top: 1px solid var(--border-soft);
+  border-right: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-main) !important;
+  font-weight: 500;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.task-item:hover {
+  border-left-color: var(--accent-rose);
+  background: rgba(212, 175, 55, 0.06);
+}
+
+/* --- 🤖 Floating Chatbot Widget --- */
+.floating-bot-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.floating-bot-widget:hover {
+  transform: scale(1.05);
+}
+
+.bot-avatar-img {
+  width: 85px;
+  height: 85px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+  background: var(--royal-purple);
+  border: 3px solid var(--accent-gold);
+  box-shadow: 0 0 20px var(--glow);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.floating-bot-tooltip {
+  background: var(--card-bg);
+  color: var(--accent-gold-light);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border: 1px solid var(--accent-gold);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+  margin: 35px 0;
+}
+
+/* --- 🤖 Chat Window Styling --- */
+.chat-window {
+  position: fixed;
+  bottom: 120px;
+  right: 25px;
+  width: 350px;
+  height: 450px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--accent-gold);
+  display: flex;
+  flex-direction: column;
+  z-index: 10000;
+  overflow: hidden;
+  animation: popup 0.3s ease-out;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.chat-header {
+  background: linear-gradient(135deg, var(--accent-rose-deep), var(--accent-rose));
+  color: var(--accent-gold-light);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-header-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--royal-purple);
+  border: 2px solid var(--accent-gold);
+}
+
+.chat-header h4 {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+}
+
+.online-status {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-gold-light);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--bg-midnight-deep);
+}
+
+.chat-message {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chat-message.bot {
+  background: var(--card-bg);
+  color: var(--text-main);
+  align-self: flex-start;
+  border: 1px solid var(--border-soft);
+  border-bottom-left-radius: 4px;
+}
+
+.chat-message.user {
+  background: linear-gradient(135deg, var(--accent-rose-deep), var(--accent-rose));
+  color: var(--accent-gold-light);
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-footer {
+  padding: 10px 15px;
+  display: flex;
+  gap: 8px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-soft);
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  outline: none;
+  color: var(--text-main);
+}
+
+.chat-footer button {
+  background: linear-gradient(135deg, var(--accent-rose-deep), var(--accent-rose));
+  color: var(--accent-gold-light);
+  border: 1px solid var(--accent-gold);
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
